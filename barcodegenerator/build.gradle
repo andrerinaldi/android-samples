@@ -1,4 +1,4 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 apply plugin: "kotlin-android"
 apply plugin: "kotlin-android-extensions"
 
@@ -7,21 +7,14 @@ android {
     buildToolsVersion build_tools_version
 
     defaultConfig {
-        applicationId "com.rinaldiandrea.android.samples"
         minSdkVersion min_sdk
         targetSdkVersion target_sdk
         versionCode 1
         versionName "1.0"
 
-        multiDexEnabled true
         vectorDrawables {
             useSupportLibrary = true
         }
-    }
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     buildTypes {
@@ -32,17 +25,8 @@ android {
     }
 }
 
-androidExtensions {
-    experimental = true
-}
-
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
-
     implementation "com.android.support:appcompat-v7:$support_version"
-    implementation "com.android.support:design:$support_version"
-    implementation "com.android.support:multidex:1.0.2"
-
-    implementation project(":barcodegenerator")
-    implementation project(":zoomableview")
+    implementation "com.google.zxing:core:3.3.0"
 }
